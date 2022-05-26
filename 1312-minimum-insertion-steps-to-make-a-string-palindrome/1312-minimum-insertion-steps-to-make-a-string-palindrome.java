@@ -6,7 +6,7 @@ class Solution {
         if(dp[i][j]!=-1)
             return dp[i][j];
         if(s.charAt(i)==t.charAt(j))
-            return 1+lcs(s,t,i-1,j-1,dp);
+            return dp[i][j]=1+lcs(s,t,i-1,j-1,dp);
         return dp[i][j]=Math.max(lcs(s,t,i-1,j,dp),lcs(s,t,i,j-1,dp));
     }
     public int minInsertions(String s) {
