@@ -22,24 +22,24 @@ class Solution {
         }
         return true;
     }
-    static int queens(boolean[][] board, int row, List<List<String>> ans) {
+    static void queens(boolean[][] board, int row, List<List<String>> ans) {
         if (row == board.length) {
             btoL(board,ans);
-            return 1;
+            return ;
         }
 
-        int count = 0;
+        // int count = 0;
 
         // placing the queen and checking for every row and col
         for (int col = 0; col < board.length; col++) {
             // place the queen if it is safe
             if(isSafe(board, row, col)) {
                 board[row][col] = true;
-                count += queens(board, row + 1,ans);
+                queens(board, row + 1,ans);
                 board[row][col] = false;
             }
         }
-        return count;
+        return ;
     }
     static void btoL(boolean board[][],List<List<String>> ans)
     {
@@ -61,7 +61,7 @@ class Solution {
     public List<List<String>> solveNQueens(int n) {
         List<List<String>> ans= new ArrayList();
         boolean[][] board= new boolean[n][n];
-        int a = queens(board,0,ans);
+        queens(board,0,ans);
         return ans;
     }
 }
