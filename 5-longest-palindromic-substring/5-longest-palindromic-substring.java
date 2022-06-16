@@ -27,7 +27,9 @@ class Solution {
                             max=j-i+1;
                             start=i;
                             end=j;
+                            break;
                         }
+                        
                     }
                 }
             }
