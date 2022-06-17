@@ -10,12 +10,12 @@
  */
 class Solution {
     public static class pair implements Comparable<pair>{
-        int li;
+        // int li;
         // int di;
         ListNode node;
-        pair(int li,  ListNode node)
+        pair(  ListNode node)
         {
-            this.li=li;
+            // this.li=li;
             // this.di=di;
             this.node=node;
         }
@@ -31,7 +31,7 @@ class Solution {
         for(int i=0;i<lists.length;i++)
         {
             if(lists[i]!=null)
-            pq.add(new pair(i,lists[i]));
+            pq.add(new pair(lists[i]));
         }
         while(!pq.isEmpty())
         {
@@ -39,7 +39,7 @@ class Solution {
             ln.next = temp.node;
             ln=ln.next;
             if(temp.node!=null && temp.node.next!=null)
-                pq.add(new pair(temp.li,temp.node.next));
+                pq.add(new pair(temp.node.next));
             
         }
 
