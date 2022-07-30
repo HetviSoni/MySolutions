@@ -6,14 +6,13 @@ class Solution {
         vis[i]=1;
         while(!q.isEmpty())
         {
-            int n = q.remove();
-            int s = adj.get(n).size();
-            for(int j=0;j<s;j++)
+            int a = q.remove();
+            for(int j=0;j<adj.get(a).size();j++)
             {
-                if(vis[adj.get(n).get(j)]==0)
+                if(vis[adj.get(a).get(j)]==0)
                 {
-                    vis[adj.get(n).get(j)]=1;
-                    q.add(adj.get(n).get(j));
+                    vis[adj.get(a).get(j)]=1;
+                    q.add(adj.get(a).get(j));
                 }
             }
         }
