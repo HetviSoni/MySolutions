@@ -32,7 +32,7 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    static class pair implements Comparable<pair>{
+    static class pair {
         int i;
         int j;
         int dis;
@@ -42,10 +42,7 @@ class Solution {
             this.j=j;
             this.dis=dis;
         }
-        public int compareTo(pair o)
-        {
-            return this.dis-o.dis;
-        }
+        
     }
     
     int shortestDistance(int n, int m, int arr[][], int x, int y) {
@@ -58,7 +55,7 @@ class Solution {
         dis[0][0]=0;
         if(arr[0][0]==0)
             return -1;
-        PriorityQueue<pair> q= new PriorityQueue();
+        Queue<pair> q= new LinkedList();
         q.add(new pair(0,0,0));
         int moves[][]={{1,0},{-1,0},{0,-1},{0,1}};
         while(!q.isEmpty())
