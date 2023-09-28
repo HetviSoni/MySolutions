@@ -35,6 +35,8 @@ class Heap_Sort
 // } Driver Code Ends
 
 
+
+
 class Solution
 {
     //Function to build a Heap from array.
@@ -44,7 +46,7 @@ class Solution
         for(int i=n;i>=0;i--)
         {
             
-            heapify(arr,n,i);
+            heapify(arr,i,n);
             // System.out.println("heapify at i= "+i);
             // for(int j=0;j<n;j++)
             // {
@@ -55,45 +57,40 @@ class Solution
     }
  
     //Heapify function to maintain heap property.
-    void heapify(int arr[], int n, int i)
+    
+    static void heapify(int arr[], int i,int n)
     {
-        // Your code here
-          int lc = 2*i+1;
-            int rc = 2*i+2;
-            if(lc>=n && rc>=n)
+
+        int lc= 2*i+1;
+        int rc=2*i+2;
+        if(lc>=n && rc>=n)
+            return;
+        if(rc>=n)
+        {
+            if(arr[lc]>arr[i])
             {
+                int temp=arr[i];
+                arr[i]=arr[lc];
+                arr[lc]=temp;
+            }
+        }else{
+            if(arr[lc]<=arr[i] && arr[rc]<=arr[i])
                 return;
-            }
-            if(rc>=n)
+            if(arr[lc]>arr[rc] && arr[i]<arr[lc])
             {
-                if(arr[lc]<arr[i])
-                {
-                    int temp=arr[lc];
-                    arr[lc]=arr[i];
-                    arr[i]=temp;
-                }
+                int temp=arr[lc];
+                arr[lc]=arr[i];
+                arr[i]=temp;
+                heapify(arr,lc,n);
+            }else if(arr[rc]>=arr[lc] && arr[i]<arr[rc])
+            {
+                int temp=arr[rc];
+                arr[rc]=arr[i];
+                arr[i]=temp;
+                heapify(arr,rc,n);
             }
-            else{
-                if(arr[i]<arr[lc] && arr[i]<arr[rc] )
-                    return;
-                else{
-                    if(arr[rc]<arr[lc])
-                    {
-                        int temp = arr[rc];
-                        arr[rc]=arr[i];
-                        arr[i]=temp;
-                        heapify(arr,n,rc);
-                    }
-                    else{
-                        int temp = arr[lc];
-                        arr[lc]=arr[i];
-                        arr[i]=temp;
-                        heapify(arr,n,lc);
-                    }
-                    
-                }
-        }
-    }
+
+        }}
     
     //Function to sort an array using Heap Sort.
     public void heapSort(int arr[], int n)
@@ -110,19 +107,9 @@ class Solution
             int temp=arr[0];
             arr[0]=arr[n-i-1];
             arr[n-i-1]=temp;
-            heapify(arr,n-i-1,0);
+            heapify(arr,0,n-i-1);
         }
-        int start=0;
-        int end=n-1;
-        while(start<=end)
-        {
-            int temp=arr[start];
-            arr[start]=arr[end];
-            arr[end]=temp;
-            start++;
-            end--;
-        }
-        // System.out.println(Arrays.toString(arr));
+        
     }
  }
  
