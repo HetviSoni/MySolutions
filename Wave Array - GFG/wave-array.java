@@ -60,8 +60,7 @@ class GFG {
 class Solution {
     public static void convertToWave(int n, int[] a) {
         // code here
-        // 1 2 3 4 5
-        // 2 1 4 3 5 
+        
         for(int i=1;i<a.length;i+=2)
         {
             int temp=a[i-1];
