@@ -148,8 +148,8 @@ class Solution{
         traverse(root.left,current_path_length,current_sum);
         if(root.right!=null)
         traverse(root.right,current_path_length,current_sum);
-        current_path_length--;
-        current_sum-=root.data;
+        // current_path_length--;
+        // current_sum-=root.data;
     }
     
     
